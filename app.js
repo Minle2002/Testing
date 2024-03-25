@@ -66,7 +66,7 @@ app.delete('/videogames/:id', async (req, res) => {
 })
 
 const server = app.listen(3000, () => {
-    console.log('PORT 3000')
+    console.log('port 3000')
 })
 
 module.exports = { app, server }; 

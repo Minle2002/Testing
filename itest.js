@@ -31,11 +31,11 @@
   
     it('HANDLES ERROR CONDITION', (done) => {
       request(app)
-        .get('/nonexistentendpoint') // Accessing a non-existent endpoint to trigger an error
-        .expect(404) // Expecting a 404 Not Found error
+        .get('/nonexistentendpoint')
+        .expect(404)
         .end((err, res) => {
-          if (err) return done(err); // Pass any error to done
-          done(); // Finish the test
+          if (err) return done(err); 
+          done();
         });
     });
 });

@@ -28,11 +28,6 @@ app.get('/videogames', async (req, res) => {
     res.render('videogames/index', { videogames });
 })
 
-app.get('/videogames', async (req, res) => {
-    const videogames = await videoGame.find({});
-    res.render('videogames/index', { videogames });
-})
-
 app.get('/videogames/new', (req, res,) => {
     res.render('videogames/new');
 });
@@ -66,7 +61,7 @@ app.delete('/videogames/:id', async (req, res) => {
 })
 
 const server = app.listen(3000, () => {
-    console.log('port 3000')
+    console.log('PORT 3000')
 })
 
 module.exports = { app, server }; 

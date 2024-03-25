@@ -5,11 +5,6 @@ const path = require('path');
 const videoGame = require('./models/games');
 const ejsMate = require('ejs-mate');
 
-mongoose.connect('mongodb://localhost:27017/video-game', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -70,12 +65,8 @@ app.delete('/videogames/:id', async (req, res) => {
     res.redirect('/videogames');
 })
 
-app.listen(3000, () => {
-    console.log('port 3000')
+const server = app.listen(3000, () => {
+    console.log('PORT 3000')
 })
-
-const server = app.listen(0, () => {
-    console.log('port 0');
-});
 
 module.exports = { app, server }; 

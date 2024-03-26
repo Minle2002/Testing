@@ -5,6 +5,11 @@ const path = require('path');
 const videoGame = require('./models/games');
 const ejsMate = require('ejs-mate');
 
+mongoose.connect("mongodb://localhost:27017/video-game", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -58,10 +63,12 @@ app.delete('/videogames/:id', async (req, res) => {
     const { id } = req.params;
     await videoGame.findByIdAndDelete(id);
     res.redirect('/videogames');
-})
+});
 
-const server = app.listen(3000, () => {
-    console.log('PORT 3000')
-})
+if (require.main === module) {
+    const server = app.listen(3000, () => {
+        console.log('PORT 3000');
+    });
 
-module.exports = { app, server }; 
+    module.exports = { app, server };
+}

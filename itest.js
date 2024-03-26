@@ -31,7 +31,7 @@
   
     it('HANDLES ERROR CONDITION', (done) => {
       request(app)
-        .get('/nonexistentendpoint')
+        .get('/randomendpoint')
         .expect(404)
         .end((err, res) => {
           if (err) return done(err); 
